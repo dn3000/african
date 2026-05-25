@@ -16,11 +16,26 @@ const itemVariants = {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden grain-overlay">
-      {/* Split background */}
-      <div className="absolute inset-0 flex">
-        {/* Left panel — African farmland */}
-        <div className="w-1/2 relative hidden md:block">
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* ── MOBILE background: single full-bleed farm image ── */}
+      <div className="absolute inset-0 md:hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80"
+          alt="Golden African farmland at sunset"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        {/* Strong dark overlay so text is always readable */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/80 via-[#0D0D0D]/60 to-[#0D0D0D]/85" />
+        {/* Subtle green glow bottom-left */}
+        <div className="absolute bottom-1/4 left-0 w-64 h-64 rounded-full bg-[#009245]/20 blur-3xl pointer-events-none" />
+      </div>
+
+      {/* ── DESKTOP split-screen background ── */}
+      <div className="absolute inset-0 hidden md:flex">
+        {/* Left — African farmland */}
+        <div className="w-1/2 relative">
           <Image
             src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80"
             alt="Lush golden farmland at sunset representing African agricultural heritage"
@@ -28,28 +43,41 @@ export default function Hero() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0D0D0D]/60 via-[#0D0D0D]/30 to-transparent" />
+          {/* Darken left edge (content legibility) and fade into right panel */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0D0D0D]/70 via-[#0D0D0D]/30 to-[#0D0D0D]/60" />
         </div>
 
-        {/* Right panel — dark tech aesthetic */}
-        <div className="w-full md:w-1/2 relative bg-[#0D0D0D]">
+        {/* Right — Solar / agri-tech aesthetic (Canadian innovation) */}
+        <div className="w-1/2 relative">
           <Image
-            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80"
-            alt="Modern agri-tech farm representing Canadian innovation"
+            src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1600&q=80"
+            alt="Solar panels on agricultural land representing modern agri-tech innovation"
             fill
-            className="object-cover opacity-20 md:hidden"
+            className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-[#0D0D0D]/80 md:bg-transparent" />
-          {/* Subtle green glow */}
-          <div className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-[#009245]/10 blur-3xl pointer-events-none" />
-          <div className="absolute bottom-1/4 left-1/4 w-48 h-48 rounded-full bg-[#ED1C24]/8 blur-3xl pointer-events-none" />
+          {/* Dark overlay keeps it moody and legible */}
+          <div className="absolute inset-0 bg-[#0D0D0D]/72" />
+          {/* Blend seam with left panel */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0D0D0D]/60 via-transparent to-transparent" />
+          {/* Accent glows */}
+          <div className="absolute top-1/3 right-1/4 w-80 h-80 rounded-full bg-[#009245]/20 blur-3xl pointer-events-none" />
+          <div className="absolute bottom-1/4 left-1/3 w-56 h-56 rounded-full bg-[#ED1C24]/12 blur-3xl pointer-events-none" />
         </div>
       </div>
 
+      {/* Grain texture overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.03] mix-blend-screen"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          backgroundSize: "256px 256px",
+        }}
+      />
+
       {/* Content overlay */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center min-h-screen py-24 md:py-0">
+        <div className="flex items-center min-h-screen py-28 md:py-0">
           <motion.div
             variants={containerVariants}
             initial="hidden"
