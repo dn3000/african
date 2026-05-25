@@ -80,7 +80,7 @@ export default function Contact() {
               <div className="mb-8">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/logo.svg"
+                  src="/images/logo.png"
                   alt="AfriCan logo"
                   className="h-9 w-auto object-contain"
                 />
@@ -236,11 +236,10 @@ export default function Contact() {
                         key={type}
                         type="button"
                         onClick={() => setForm((p) => ({ ...p, inquiry: type }))}
-                        className={`px-4 py-2 text-xs font-[family-name:var(--font-montserrat)] font-bold uppercase tracking-widest rounded-sm border transition-all ${
-                          form.inquiry === type
+                        className={`px-4 py-2 text-xs font-[family-name:var(--font-montserrat)] font-bold uppercase tracking-widest rounded-sm border transition-all ${form.inquiry === type
                             ? "bg-[#009245] border-[#009245] text-white"
                             : "border-[#2A2A2A] text-[#9A9A9A] hover:border-[#009245]/40 hover:text-[#F5F5F5]"
-                        }`}
+                          }`}
                       >
                         {type}
                       </button>

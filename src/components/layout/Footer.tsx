@@ -18,7 +18,7 @@ export default function Footer() {
             <div className="mb-4">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/logo.svg"
+                src="/images/logo.png"
                 alt="AfriCan — Exwick Farm"
                 className="h-10 w-auto object-contain"
               />
