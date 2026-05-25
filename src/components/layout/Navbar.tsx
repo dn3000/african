@@ -3,12 +3,14 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useInvestorModal } from "@/context/InvestorModalContext";
 
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "The Farm", href: "#crops" },
   { label: "Innovation", href: "#innovation" },
   { label: "Roadmap", href: "#roadmap" },
+  { label: "Updates", href: "#updates" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -16,6 +18,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("");
+  const { openModal } = useInvestorModal();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 80);
@@ -75,13 +78,12 @@ export default function Navbar() {
                 )}
               </a>
             ))}
-            <a
-              href="#contact"
-              onClick={() => handleNavClick("#contact")}
+            <button
+              onClick={openModal}
               className="ml-2 bg-[#ED1C24] text-white text-sm font-[family-name:var(--font-montserrat)] font-bold uppercase tracking-widest px-5 py-2.5 rounded-sm transition-all duration-300 hover:bg-[#c8151c] hover:shadow-lg hover:shadow-[#ED1C24]/30"
             >
               Partner With Us
-            </a>
+            </button>
           </div>
 
           {/* Mobile hamburger — explicit size + touch target + bg ring */}
@@ -119,16 +121,15 @@ export default function Navbar() {
                   {link.label}
                 </motion.a>
               ))}
-              <motion.a
-                href="#contact"
+              <motion.button
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navLinks.length * 0.07 }}
-                onClick={() => handleNavClick("#contact")}
+                onClick={() => { setMenuOpen(false); openModal(); }}
                 className="mt-4 bg-[#ED1C24] text-white font-[family-name:var(--font-montserrat)] font-bold uppercase tracking-widest px-8 py-4 rounded-sm text-base"
               >
                 Partner With Us
-              </motion.a>
+              </motion.button>
             </nav>
           </motion.div>
         )}

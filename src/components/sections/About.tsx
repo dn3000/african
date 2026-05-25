@@ -36,8 +36,8 @@ export default function About() {
             >
               <div className="relative h-[420px] md:h-[520px] rounded-lg overflow-hidden border-l-4 border-[#009245]">
                 <Image
-                  src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=1600&q=80"
-                  alt="Lush African farm crops representing the heart of Exwick Farm"
+                  src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1600&q=80"
+                  alt="Rows of mixed vegetables and cover crops growing across Exwick Farm fields"
                   fill
                   className="object-cover"
                 />
@@ -127,8 +127,8 @@ export default function About() {
                   Management Team
                 </div>
                 <ul className="space-y-1.5 text-sm text-[#9A9A9A]">
-                  <li><span className="text-[#F5F5F5] font-medium">Co-Owners:</span> Blessing Jumo &amp; Brother</li>
-                  <li><span className="text-[#F5F5F5] font-medium">Key Advisor:</span> Mother (Foundational Wisdom)</li>
+                  <li><span className="text-[#F5F5F5] font-medium">Co-Owners:</span> B. Jumo</li>
+                  <li><span className="text-[#F5F5F5] font-medium">Key Advisor:</span> V. Jumo (Co-founder)</li>
                   <li><span className="text-[#F5F5F5] font-medium">Operator:</span> AfriCan (Investment, Operations &amp; Development)</li>
                 </ul>
               </motion.div>

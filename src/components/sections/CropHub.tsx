@@ -61,8 +61,8 @@ const secondaryCrops = [
     description:
       "Long-term mixed orchard and vegetable rotation planned for Phase 3, establishing perennial income and soil regeneration cycles.",
     imageSrc:
-      "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Lush orchard and mixed agricultural land representing Phase 3 diversification",
+      "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Established fruit orchard rows representing Exwick Farm Phase 3 diversification",
   },
 ];
 

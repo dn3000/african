@@ -11,8 +11,8 @@ const features = [
     body: "Upgrading from a manual borehole to a fully automated solar-powered water system with storage tanks — ensuring year-round crop irrigation independent of grid power.",
     tags: ["☀️ Solar Energy", "💧 Water Security", "⚡ Off-Grid"],
     imageSrc:
-      "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Solar panels on agricultural land powering an off-grid irrigation system",
+      "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Solar-powered borehole pump pushing water through irrigation channels on Exwick Farm",
     tagColor: "bg-[#009245]/15 text-[#009245] border border-[#009245]/25",
     isLeft: false,
   },
@@ -23,8 +23,8 @@ const features = [
     tags: ["📷 Live Feed", "🤖 AI Alerts", "🔒 Security"],
     note: "Camera integration placeholder — Lorex/Nest API to be connected in v2.",
     imageSrc:
-      "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Modern farm security and monitoring system with smart cameras",
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Smart security camera mounted on farm infrastructure for 24/7 monitoring",
     tagColor: "bg-[#FBB03B]/15 text-[#FBB03B] border border-[#FBB03B]/25",
     isLeft: true,
   },

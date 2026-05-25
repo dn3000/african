@@ -71,6 +71,40 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-backdrop-filter: blur(12px);
 }
 
+/* Blog post MDX prose styles */
+.prose-african h1,
+.prose-african h2,
+.prose-african h3 {
+  font-family: var(--font-montserrat), 'Montserrat', system-ui, sans-serif;
+  font-weight: 800;
+  color: #F5F5F5;
+  line-height: 1.2;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.prose-african h1 { font-size: 2rem; }
+.prose-african h2 { font-size: 1.4rem; color: #009245; }
+.prose-african h3 { font-size: 1.1rem; }
+.prose-african p {
+  color: #C8C8C8;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+.prose-african strong { color: #F5F5F5; }
+.prose-african a { color: #009245; text-decoration: underline; }
+.prose-african ul, .prose-african ol {
+  color: #C8C8C8;
+  padding-left: 1.5rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.8;
+}
+.prose-african li { margin-bottom: 0.3rem; }
+.prose-african hr {
+  border-color: #2A2A2A;
+  margin: 2rem 0;
+}
+.prose-african em { color: #9A9A9A; font-style: italic; }
+
 /* Green grid pattern utility */
 .green-grid-bg {
   background-image:

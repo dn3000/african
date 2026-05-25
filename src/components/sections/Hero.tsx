@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
+import { useInvestorModal } from "@/context/InvestorModalContext";
 
 const containerVariants = {
   hidden: {},
@@ -15,6 +16,7 @@ const itemVariants = {
 };
 
 export default function Hero() {
+  const { openModal } = useInvestorModal();
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* ── MOBILE background: single full-bleed farm image ── */}
@@ -124,12 +126,12 @@ export default function Hero() {
               >
                 Explore the Farm
               </a>
-              <a
-                href="#contact"
+              <button
+                onClick={openModal}
                 className="inline-flex items-center justify-center bg-[#ED1C24] text-white font-[family-name:var(--font-montserrat)] font-bold uppercase tracking-widest text-sm px-8 py-4 rounded-sm hover:bg-[#c8151c] shadow-lg hover:shadow-[#ED1C24]/30 transition-all duration-300"
               >
                 Invest in Innovation
-              </a>
+              </button>
             </motion.div>
 
             {/* Tagline strip */}

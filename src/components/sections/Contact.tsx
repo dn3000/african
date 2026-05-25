@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Mail, Phone, Send } from "lucide-react";
+import { MapPin, Mail, Phone, Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 
 const inquiryTypes = ["Investor", "Export Partner", "Community", "Media", "Other"];
@@ -21,27 +21,38 @@ const countries = [
   { code: "OTHER", label: "Other" },
 ];
 
+const BLESSING_EMAIL = "contact@africanfarm.com";
+
 export default function Contact() {
   const [form, setForm] = useState({
-    name: "",
-    email: "",
-    country: "",
-    phone: "",
-    inquiry: "",
-    message: "",
+    name: "", email: "", country: "", phone: "", inquiry: "", message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    if (error) setError(null);
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("AfriCan contact form submission:", form);
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Failed");
+      setSubmitted(true);
+    } catch {
+      setError("Send failed — please email us directly.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputClass =
@@ -79,11 +90,7 @@ export default function Contact() {
             <div>
               <div className="mb-8">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/logo.png"
-                  alt="AfriCan logo"
-                  className="h-9 w-auto object-contain"
-                />
+                <img src="/images/logo.png" alt="AfriCan logo" className="h-9 w-auto object-contain" />
               </div>
 
               <h3 className="font-[family-name:var(--font-montserrat)] font-bold text-xl text-[#F5F5F5] mb-2">
@@ -98,9 +105,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <div className="text-[#F5F5F5] text-sm font-medium">Locations</div>
-                    <div className="text-[#9A9A9A] text-xs mt-0.5">
-                      Zimbabwe (Africa) | Canada
-                    </div>
+                    <div className="text-[#9A9A9A] text-xs mt-0.5">Zimbabwe (Africa) | Canada</div>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
@@ -109,7 +114,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <div className="text-[#F5F5F5] text-sm font-medium">Email</div>
-                    <div className="text-[#9A9A9A] text-xs mt-0.5">contact@africanfarm.com</div>
+                    <div className="text-[#9A9A9A] text-xs mt-0.5">{BLESSING_EMAIL}</div>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
@@ -130,10 +135,7 @@ export default function Contact() {
               </div>
               <div className="flex gap-3">
                 {["ZWL", "CAD", "USD"].map((c) => (
-                  <span
-                    key={c}
-                    className="bg-[#2A2A2A] text-[#F5F5F5] text-xs font-[family-name:var(--font-montserrat)] font-bold px-3 py-1 rounded-sm"
-                  >
+                  <span key={c} className="bg-[#2A2A2A] text-[#F5F5F5] text-xs font-[family-name:var(--font-montserrat)] font-bold px-3 py-1 rounded-sm">
                     {c}
                   </span>
                 ))}
@@ -151,12 +153,12 @@ export default function Contact() {
           >
             {submitted ? (
               <div className="flex flex-col items-center justify-center h-full text-center py-16">
-                <div className="text-5xl mb-4">🌱</div>
+                <CheckCircle size={52} className="text-[#009245] mb-5" strokeWidth={1.5} />
                 <h3 className="font-[family-name:var(--font-montserrat)] font-bold text-2xl text-[#F5F5F5] mb-3">
-                  Message Received!
+                  Message Sent!
                 </h3>
                 <p className="text-[#9A9A9A] max-w-sm">
-                  Thank you for reaching out. The AfriCan team will get back to you shortly.
+                  Blessing will be in touch within <span className="text-[#009245] font-semibold">48 hours</span>. Check your inbox for a confirmation.
                 </p>
               </div>
             ) : (
@@ -166,29 +168,13 @@ export default function Contact() {
                     <label className="block text-xs font-[family-name:var(--font-montserrat)] font-semibold uppercase tracking-widest text-[#9A9A9A] mb-2">
                       Full Name *
                     </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={form.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="Your full name"
-                      className={inputClass}
-                    />
+                    <input type="text" name="name" value={form.name} onChange={handleChange} required placeholder="Your full name" className={inputClass} />
                   </div>
                   <div>
                     <label className="block text-xs font-[family-name:var(--font-montserrat)] font-semibold uppercase tracking-widest text-[#9A9A9A] mb-2">
                       Email Address *
                     </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      required
-                      placeholder="your@email.com"
-                      className={inputClass}
-                    />
+                    <input type="email" name="email" value={form.email} onChange={handleChange} required placeholder="your@email.com" className={inputClass} />
                   </div>
                 </div>
 
@@ -197,17 +183,10 @@ export default function Contact() {
                     <label className="block text-xs font-[family-name:var(--font-montserrat)] font-semibold uppercase tracking-widest text-[#9A9A9A] mb-2">
                       Country
                     </label>
-                    <select
-                      name="country"
-                      value={form.country}
-                      onChange={handleChange}
-                      className={`${inputClass} appearance-none cursor-pointer`}
-                    >
+                    <select name="country" value={form.country} onChange={handleChange} className={`${inputClass} appearance-none cursor-pointer`}>
                       <option value="">Select country</option>
                       {countries.map((c) => (
-                        <option key={c.code} value={c.code}>
-                          {c.label}
-                        </option>
+                        <option key={c.code} value={c.code}>{c.label}</option>
                       ))}
                     </select>
                   </div>
@@ -215,14 +194,7 @@ export default function Contact() {
                     <label className="block text-xs font-[family-name:var(--font-montserrat)] font-semibold uppercase tracking-widest text-[#9A9A9A] mb-2">
                       Phone
                     </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={form.phone}
-                      onChange={handleChange}
-                      placeholder="+1 234 567 8900"
-                      className={inputClass}
-                    />
+                    <input type="tel" name="phone" value={form.phone} onChange={handleChange} placeholder="+1 234 567 8900" className={inputClass} />
                   </div>
                 </div>
 
@@ -236,10 +208,11 @@ export default function Contact() {
                         key={type}
                         type="button"
                         onClick={() => setForm((p) => ({ ...p, inquiry: type }))}
-                        className={`px-4 py-2 text-xs font-[family-name:var(--font-montserrat)] font-bold uppercase tracking-widest rounded-sm border transition-all ${form.inquiry === type
+                        className={`px-4 py-2 text-xs font-[family-name:var(--font-montserrat)] font-bold uppercase tracking-widest rounded-sm border transition-all ${
+                          form.inquiry === type
                             ? "bg-[#009245] border-[#009245] text-white"
                             : "border-[#2A2A2A] text-[#9A9A9A] hover:border-[#009245]/40 hover:text-[#F5F5F5]"
-                          }`}
+                        }`}
                       >
                         {type}
                       </button>
@@ -262,12 +235,29 @@ export default function Contact() {
                   />
                 </div>
 
+                {/* Error state */}
+                {error && (
+                  <div className="flex items-start gap-3 bg-[#ED1C24]/10 border border-[#ED1C24]/30 rounded-sm px-4 py-3">
+                    <AlertCircle size={16} className="text-[#ED1C24] flex-shrink-0 mt-0.5" />
+                    <div className="text-sm text-[#F5F5F5]">
+                      {error}{" "}
+                      <a href={`mailto:${BLESSING_EMAIL}`} className="text-[#ED1C24] underline underline-offset-2 hover:text-[#ff4d53] transition-colors">
+                        {BLESSING_EMAIL}
+                      </a>
+                    </div>
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-[#ED1C24] text-white font-[family-name:var(--font-montserrat)] font-bold uppercase tracking-widest text-sm py-4 rounded-sm flex items-center justify-center gap-3 hover:bg-[#c8151c] shadow-lg hover:shadow-[#ED1C24]/30 transition-all duration-300"
+                  disabled={loading}
+                  className="w-full bg-[#ED1C24] text-white font-[family-name:var(--font-montserrat)] font-bold uppercase tracking-widest text-sm py-4 rounded-sm flex items-center justify-center gap-3 hover:bg-[#c8151c] shadow-lg hover:shadow-[#ED1C24]/30 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  <Send size={16} />
-                  Send Message
+                  {loading ? (
+                    <><Loader2 size={16} className="animate-spin" />Sending…</>
+                  ) : (
+                    <><Send size={16} />Send Message</>
+                  )}
                 </button>
               </form>
             )}
