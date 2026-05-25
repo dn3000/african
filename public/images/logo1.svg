@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" width="220" height="60">
+  <!-- "afri" in Forest Green -->
+  <text x="4" y="42" font-family="Montserrat, Arial, sans-serif" font-weight="800" font-size="40" fill="#009245">afri</text>
+  <!-- "can" in Vibrant Red -->
+  <text x="98" y="42" font-family="Montserrat, Arial, sans-serif" font-weight="800" font-size="40" fill="#ED1C24">can</text>
+  <!-- Golden arc beneath -->
+  <path d="M 8 50 Q 110 68 212 50" stroke="#FBB03B" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>
