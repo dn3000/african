@@ -9,7 +9,6 @@ const navLinks = [
   { label: "About", href: "#about" },
   { label: "The Farm", href: "#crops" },
   { label: "Innovation", href: "#innovation" },
-  { label: "Roadmap", href: "#roadmap" },
   { label: "Updates", href: "#updates" },
   { label: "Contact", href: "#contact" },
 ];

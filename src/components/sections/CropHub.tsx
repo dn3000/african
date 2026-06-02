@@ -36,7 +36,7 @@ const mainCrops = [
     description:
       "High-yield, long shelf-life varieties designed to serve local food security needs and regional wholesale markets.",
     imageSrc:
-      "https://images.unsplash.com/photo-1587735243615-c03f25aaff15?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?auto=format&fit=crop&w=1600&q=80",
     imageAlt: "Freshly harvested golden onions representing Exwick Farm's food security crops",
   },
 ];

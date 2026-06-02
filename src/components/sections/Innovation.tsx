@@ -18,7 +18,7 @@ const features = [
   },
   {
     id: "cameras",
-    headline: "24/7 Smart Camera Network",
+    headline: "24/7 Smart Camera Monitoring",
     body: "Real-time live feeds accessible to investors and partners across Canada and Africa. AI-assisted motion detection and thermal imaging protect livestock and high-value horticultural zones.",
     tags: ["📷 Live Feed", "🤖 AI Alerts", "🔒 Security"],
     note: "Camera integration placeholder — Lorex/Nest API to be connected in v2.",
@@ -33,7 +33,7 @@ const features = [
     headline: "Farmcation — Agri-Tourism Meets Modern Agriculture",
     body: "A future business stream blending sustainable agriculture with eco-tourism. Visitors and investors can experience Exwick Farm first-hand — creating revenue, awareness, and community.",
     tags: ["🌿 Eco-Tourism", "🏕️ Farmstay"],
-    badge: "COMING PHASE 3",
+    badge: "COMING SOON",
     imageSrc:
       "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=1600&q=80",
     imageAlt: "Eco-lodge set in lush nature representing the Farmcation agri-tourism concept",

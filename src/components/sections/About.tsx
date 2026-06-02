@@ -127,8 +127,6 @@ export default function About() {
                   Management Team
                 </div>
                 <ul className="space-y-1.5 text-sm text-[#9A9A9A]">
-                  <li><span className="text-[#F5F5F5] font-medium">Co-Owners:</span> B. Jumo</li>
-                  <li><span className="text-[#F5F5F5] font-medium">Key Advisor:</span> V. Jumo (Co-founder)</li>
                   <li><span className="text-[#F5F5F5] font-medium">Operator:</span> AfriCan (Investment, Operations &amp; Development)</li>
                 </ul>
               </motion.div>

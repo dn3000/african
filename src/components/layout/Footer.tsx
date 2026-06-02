@@ -4,7 +4,6 @@ const quickLinks = [
   { label: "About", href: "#about" },
   { label: "The Farm", href: "#crops" },
   { label: "Innovation", href: "#innovation" },
-  { label: "Roadmap", href: "#roadmap" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -82,11 +81,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-[#FBB03B] flex-shrink-0" />
-                <span className="text-[#9A9A9A] text-xs">contact@africanfarm.com</span>
+                <span className="text-[#9A9A9A] text-xs">info@africanadainc.com</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={16} className="text-[#FBB03B] flex-shrink-0" />
-                <span className="text-[#9A9A9A] text-xs">+1 (Canada) | +263 (Zimbabwe)</span>
+                <span className="text-[#9A9A9A] text-xs">+263 772 688 684 | +1 780 200 2147</span>
               </li>
             </ul>
           </div>

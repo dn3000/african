@@ -42,12 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
-    {
-      url: `${BASE}/#roadmap`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
+
     {
       url: `${BASE}/#updates`,
       lastModified: new Date(),

@@ -56,7 +56,7 @@ export default function Farmcation() {
         {/* Phase tag */}
         <div className="absolute top-6 left-6 sm:left-8 lg:left-12">
           <span className="inline-block font-[family-name:var(--font-montserrat)] text-xs font-semibold uppercase tracking-[0.3em] text-[#ED1C24] border border-[#ED1C24]/50 bg-[#0D0D0D]/60 backdrop-blur-sm px-3 py-1 rounded-sm">
-            Launching Phase 3
+            Coming Soon
           </span>
         </div>
       </div>
@@ -122,7 +122,7 @@ export default function Farmcation() {
                 Register Interest
               </button>
               <p className="text-[#9A9A9A] text-sm">
-                Farmcation launches with Phase 3. Register now to be first on the list.
+                Farmcation is coming soon. Register now to be first on the list.
               </p>
             </motion.div>
           </motion.div>

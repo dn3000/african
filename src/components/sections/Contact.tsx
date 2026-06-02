@@ -21,7 +21,7 @@ const countries = [
   { code: "OTHER", label: "Other" },
 ];
 
-const BLESSING_EMAIL = "contact@africanfarm.com";
+const CONTACT_EMAIL = "info@africanadainc.com";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -85,7 +85,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-2 bg-[#1A1A1A] rounded-lg p-8 flex flex-col justify-between border border-[#2A2A2A]"
+            className="hidden lg:flex lg:col-span-2 bg-[#1A1A1A] rounded-lg p-8 flex-col justify-between border border-[#2A2A2A]"
           >
             <div>
               <div className="mb-8">
@@ -93,10 +93,9 @@ export default function Contact() {
                 <img src="/images/logo.png" alt="AfriCan logo" className="h-9 w-auto object-contain" />
               </div>
 
-              <h3 className="font-[family-name:var(--font-montserrat)] font-bold text-xl text-[#F5F5F5] mb-2">
+              <h3 className="font-[family-name:var(--font-montserrat)] font-bold text-xl text-[#F5F5F5] mb-8">
                 AfriCan — Exwick Farm
               </h3>
-              <p className="text-[#9A9A9A] text-sm mb-8">Contact: Blessing Jumo</p>
 
               <ul className="space-y-5">
                 <li className="flex items-start gap-4">
@@ -114,7 +113,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <div className="text-[#F5F5F5] text-sm font-medium">Email</div>
-                    <div className="text-[#9A9A9A] text-xs mt-0.5">{BLESSING_EMAIL}</div>
+                    <div className="text-[#9A9A9A] text-xs mt-0.5">{CONTACT_EMAIL}</div>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
@@ -123,7 +122,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <div className="text-[#F5F5F5] text-sm font-medium">Phone</div>
-                    <div className="text-[#9A9A9A] text-xs mt-0.5">+1 (Canada) | +263 (Zimbabwe)</div>
+                    <div className="text-[#9A9A9A] text-xs mt-0.5">+263 772 688 684 | +1 780 200 2147</div>
                   </div>
                 </li>
               </ul>
@@ -158,7 +157,7 @@ export default function Contact() {
                   Message Sent!
                 </h3>
                 <p className="text-[#9A9A9A] max-w-sm">
-                  Blessing will be in touch within <span className="text-[#009245] font-semibold">48 hours</span>. Check your inbox for a confirmation.
+                  We will be in touch within <span className="text-[#009245] font-semibold">48 hours</span>. Check your inbox for a confirmation.
                 </p>
               </div>
             ) : (
@@ -241,8 +240,8 @@ export default function Contact() {
                     <AlertCircle size={16} className="text-[#ED1C24] flex-shrink-0 mt-0.5" />
                     <div className="text-sm text-[#F5F5F5]">
                       {error}{" "}
-                      <a href={`mailto:${BLESSING_EMAIL}`} className="text-[#ED1C24] underline underline-offset-2 hover:text-[#ff4d53] transition-colors">
-                        {BLESSING_EMAIL}
+                      <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#ED1C24] underline underline-offset-2 hover:text-[#ff4d53] transition-colors">
+                        {CONTACT_EMAIL}
                       </a>
                     </div>
                   </div>
