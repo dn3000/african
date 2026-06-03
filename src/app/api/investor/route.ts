@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL || "info@africanadainc.com";
-const FROM_EMAIL = "AfriCan <onboarding@resend.dev>";
+const FROM_EMAIL = "AfriCan <info@africanadainc.com>";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://exwickfarm.com";
 
 const PROFILE_LABELS: Record<string, string> = {
