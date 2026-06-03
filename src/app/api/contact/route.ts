@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const BLESSING_EMAIL = process.env.BLESSING_EMAIL || "contact@africanfarm.com";
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL || "info@africanadainc.com";
 const FROM_EMAIL = "AfriCan <onboarding@resend.dev>";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://exwickfarm.com";
 
@@ -65,7 +65,7 @@ body{font-family:Arial,sans-serif;background:#0D0D0D;color:#F5F5F5;margin:0;padd
   <div class="body">
     <div class="icon">🌱</div>
     <div class="title">Message Received, ${firstName}!</div>
-    <p class="text">Thank you for reaching out to <span class="hl">AfriCan — Exwick Farm</span>. Blessing will personally review your message and be in touch <span class="hl">within 48 hours</span>.</p>
+    <p class="text">Thank you for reaching out to <span class="hl">AfriCan — Exwick Farm</span>. Our team will review your message and be in touch <span class="hl">within 48 hours</span>.</p>
     <p class="text" style="font-size:13px">In the meantime, explore our story at <a href="${SITE_URL}" style="color:#009245">exwickfarm.com</a></p>
   </div>
   <div class="ftr">AfriCan | Exwick Farm &nbsp;·&nbsp; Zimbabwe &amp; Canada</div>
@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
     await Promise.all([
       resend.emails.send({
         from: FROM_EMAIL,
-        to: BLESSING_EMAIL,
+        to: CONTACT_EMAIL,
         subject: `[AfriCan] ${inquiry || "New"} enquiry from ${name}`,
         html: notificationHtml({ name, email, country, phone, inquiry, message }),
       }),

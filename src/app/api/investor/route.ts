@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const BLESSING_EMAIL = process.env.BLESSING_EMAIL || "contact@africanfarm.com";
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL || "info@africanadainc.com";
 const FROM_EMAIL = "AfriCan <onboarding@resend.dev>";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://exwickfarm.com";
 
@@ -68,14 +68,14 @@ body{font-family:Arial,sans-serif;background:#0D0D0D;color:#F5F5F5;margin:0;padd
     <div class="greeting">Welcome to the AfriCan Vision 🌍</div>
     <p class="text">Thank you for your interest as a <span class="pill">${label}</span>. You've taken the first step in joining something truly transformative.</p>
     <p class="text"><span class="hl">Exwick Farm</span> is a 10-hectare agri-tech estate in Zimbabwe being developed to bridge African agricultural potential with Canadian diaspora investment — building a self-sustaining, multi-income farm that creates local jobs, exports premium produce, and opens doors for the AfriCan community worldwide.</p>
-    <p class="text"><span class="green">Blessing Jumo</span> will personally follow up to discuss how your involvement can shape Exwick Farm's next chapter. Expect to hear from her within a few days.</p>
+    <p class="text"><span class="green">Our team</span> will personally follow up to discuss how your involvement can shape Exwick Farm's next chapter. Expect to hear from us within a few days.</p>
     <hr class="divider">
     <p class="text"><strong style="color:#F5F5F5">What to expect:</strong><br>
     ✓ Personalised information pack matched to your investor profile<br>
     ✓ Farm financials, phase roadmap, and impact projections<br>
-    ✓ A direct conversation with Blessing about your vision</p>
+    ✓ A direct conversation with our team about your vision</p>
     <hr class="divider">
-    <div class="sig">Warmly,<br><strong>Blessing Jumo</strong><br><span style="color:#9A9A9A;font-size:12px">Founder, AfriCan | Exwick Farm</span></div>
+    <div class="sig">Warmly,<br><strong>The AfriCan Team</strong><br><span style="color:#9A9A9A;font-size:12px">AfriCan | Exwick Farm</span></div>
   </div>
   <div class="ftr">AfriCan | Exwick Farm &nbsp;·&nbsp; Zimbabwe &amp; Canada &nbsp;·&nbsp; <a href="${SITE_URL}" style="color:#FBB03B">exwickfarm.com</a></div>
 </div></body></html>`;
@@ -101,7 +101,7 @@ export async function POST(req: NextRequest) {
     await Promise.all([
       resend.emails.send({
         from: FROM_EMAIL,
-        to: BLESSING_EMAIL,
+        to: CONTACT_EMAIL,
         subject: `[AfriCan] New investor lead — ${PROFILE_LABELS[profile] || profile}`,
         html: leadHtml({ profile, email, timezone: timezone || "", timestamp }),
       }),

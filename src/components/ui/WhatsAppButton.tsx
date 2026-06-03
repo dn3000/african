@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "12045551234";
+const WA_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "263772688684";
 const WA_MESSAGE = encodeURIComponent(
-  "Hi Blessing, I found AfriCan's website and I'm interested in learning more about Exwick Farm."
+  "Hi, I found AfriCan's website and I'm interested in learning more about Exwick Farm."
 );
 const WA_URL = `https://wa.me/${WA_NUMBER}?text=${WA_MESSAGE}`;
 
@@ -44,7 +44,7 @@ export default function WhatsAppButton() {
                 transition={{ duration: 0.15 }}
                 className="bg-[#1A1A1A] border border-[#2A2A2A] text-[#F5F5F5] text-xs font-[family-name:var(--font-montserrat)] font-semibold px-3 py-2 rounded-sm whitespace-nowrap shadow-lg"
               >
-                Chat with Blessing on WhatsApp
+                Chat on WhatsApp
               </motion.div>
             )}
           </AnimatePresence>
@@ -57,7 +57,7 @@ export default function WhatsAppButton() {
               href={WA_URL}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Chat with Blessing on WhatsApp"
+              aria-label="Chat on WhatsApp"
               onMouseEnter={() => setHovered(true)}
               onMouseLeave={() => setHovered(false)}
               className="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg hover:bg-[#20bc5a] transition-colors duration-200"

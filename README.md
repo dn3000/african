@@ -38,7 +38,7 @@ Create a `.env.local` file in the root. All variables are documented here:
 | `RESEND_API_KEY` | Yes | Resend API key — get one at [resend.com](https://resend.com) |
 | `BLESSING_EMAIL` | Yes | Email that receives contact form + investor leads |
 | `NEXT_PUBLIC_SITE_URL` | Yes | Public URL (e.g. `https://exwickfarm.com`) — used in email links |
-| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Yes | WhatsApp number with country code, no spaces (e.g. `12045551234`) |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Yes | WhatsApp number with country code, no spaces (e.g. `263772688684`) |
 | `NEXT_PUBLIC_SANITY_PROJECT_ID` | Yes (CMS) | Sanity project ID — created at [sanity.io/manage](https://sanity.io/manage) |
 | `NEXT_PUBLIC_SANITY_DATASET` | Yes (CMS) | Usually `production` |
 | `SANITY_API_TOKEN` | Yes (CMS) | Sanity read/write token (Editor permissions) |
@@ -49,7 +49,7 @@ Create a `.env.local` file in the root. All variables are documented here:
 RESEND_API_KEY=re_xxxxxxxxxxxx
 BLESSING_EMAIL=blessing@exwickfarm.com
 NEXT_PUBLIC_SITE_URL=https://exwickfarm.com
-NEXT_PUBLIC_WHATSAPP_NUMBER=12045551234
+NEXT_PUBLIC_WHATSAPP_NUMBER=263772688684
 NEXT_PUBLIC_SANITY_PROJECT_ID=abc123de
 NEXT_PUBLIC_SANITY_DATASET=production
 SANITY_API_TOKEN=sk_xxxxxxxxxxxxx
