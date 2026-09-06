@@ -152,16 +152,17 @@ export default function CurrencyWidget() {
                   key={code}
                   className="flex items-center gap-2 bg-[#0D0D0D] border border-[#2A2A2A] rounded-sm px-3 py-2 focus-within:border-[#FBB03B]/60 transition-colors"
                 >
-                  <span className="text-base select-none">{flag}</span>
+                  <span aria-hidden="true" className="text-base select-none">{flag}</span>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[10px] text-[#9A9A9A] font-[family-name:var(--font-montserrat)] uppercase tracking-wider leading-none mb-0.5">
+                    <label htmlFor={`currency-${code}`} className="block text-[10px] text-[#9A9A9A] font-[family-name:var(--font-montserrat)] uppercase tracking-wider leading-none mb-0.5">
                       {label}
-                    </div>
+                    </label>
                     <div className="flex items-center gap-1">
                       <span className="text-xs text-[#FBB03B] font-[family-name:var(--font-montserrat)] font-semibold w-7 flex-shrink-0">
                         {symbol}
                       </span>
                       <input
+                        id={`currency-${code}`}
                         type="number"
                         min="0"
                         value={amounts[code as CurrencyCode]}

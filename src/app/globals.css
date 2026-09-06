@@ -112,3 +112,21 @@ h1, h2, h3, h4, h5, h6 {
     linear-gradient(90deg, rgba(0, 146, 69, 0.06) 1px, transparent 1px);
   background-size: 40px 40px;
 }
+
+/* Keyboard focus indicator (WCAG 2.4.7 Focus Visible / 2.4.11 Focus Not Obscured).
+   Several controls set `outline-none` to keep the mouse hover design clean, which
+   also removed the keyboard ring. These rules sit outside Tailwind's cascade
+   layers, so they win over those utilities without needing !important. They apply
+   only to :focus-visible, so pointer interaction looks exactly as it did before. */
+:where(a, button, input, select, textarea, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: 2px solid var(--color-light);
+  outline-offset: 2px;
+}
+
+/* On the light-on-dark surfaces the site uses, a green inner edge keeps the ring
+   on-brand while the light outline guarantees the 3:1 contrast against any panel. */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  border-color: var(--color-green);
+}

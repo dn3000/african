@@ -101,10 +101,12 @@ export default function InvestorModal({ isOpen, onClose }: Props) {
                   </div>
 
                   {/* Profile tiles */}
-                  <div className="grid grid-cols-2 gap-3 mb-6">
+                  <div role="group" aria-labelledby="investor-modal-desc" className="grid grid-cols-2 gap-3 mb-6">
                     {PROFILES.map((p) => (
                       <button
                         key={p.id}
+                        type="button"
+                        aria-pressed={selected === p.id}
                         onClick={() => { setSelected(p.id); setError(null); }}
                         className={`flex flex-col items-center gap-2 p-4 rounded-sm border transition-all duration-200 text-center ${
                           selected === p.id
@@ -131,12 +133,14 @@ export default function InvestorModal({ isOpen, onClose }: Props) {
                         value={email}
                         onChange={(e) => { setEmail(e.target.value); setError(null); }}
                         placeholder="Your email address"
+                        aria-required="true"
+                        aria-describedby={error ? "investor-error" : undefined}
                         className="w-full bg-[#0D0D0D] border border-[#2A2A2A] focus:border-[#FBB03B]/60 rounded-sm px-4 py-3 text-[#F5F5F5] placeholder-[#9A9A9A]/60 text-sm outline-none transition-colors"
                       />
                     </div>
 
                     {error && (
-                      <div className="flex items-start gap-2 bg-[#ED1C24]/10 border border-[#ED1C24]/30 rounded-sm px-3 py-2.5">
+                      <div id="investor-error" role="alert" className="flex items-start gap-2 bg-[#ED1C24]/10 border border-[#ED1C24]/30 rounded-sm px-3 py-2.5">
                         <AlertCircle size={14} className="text-[#ED1C24] flex-shrink-0 mt-0.5" />
                         <p className="text-xs text-[#F5F5F5]">{error}</p>
                       </div>

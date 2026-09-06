@@ -151,7 +151,7 @@ export default function Contact() {
             className="lg:col-span-3 bg-[#1A1A1A] rounded-lg p-8 border border-[#2A2A2A]"
           >
             {submitted ? (
-              <div className="flex flex-col items-center justify-center h-full text-center py-16">
+              <div role="status" className="flex flex-col items-center justify-center h-full text-center py-16">
                 <CheckCircle size={52} className="text-[#009245] mb-5" strokeWidth={1.5} />
                 <h3 className="font-[family-name:var(--font-montserrat)] font-bold text-2xl text-[#F5F5F5] mb-3">
                   Message Sent!
@@ -164,25 +164,25 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-[family-name:var(--font-montserrat)] font-semibold uppercase tracking-widest text-[#9A9A9A] mb-2">
+                    <label htmlFor="contact-name" className="block text-xs font-[family-name:var(--font-montserrat)] font-semibold uppercase tracking-widest text-[#9A9A9A] mb-2">
                       Full Name *
                     </label>
-                    <input type="text" name="name" value={form.name} onChange={handleChange} required placeholder="Your full name" className={inputClass} />
+                    <input id="contact-name" type="text" name="name" value={form.name} onChange={handleChange} required aria-required="true" placeholder="Your full name" className={inputClass} />
                   </div>
                   <div>
-                    <label className="block text-xs font-[family-name:var(--font-montserrat)] font-semibold uppercase tracking-widest text-[#9A9A9A] mb-2">
+                    <label htmlFor="contact-email" className="block text-xs font-[family-name:var(--font-montserrat)] font-semibold uppercase tracking-widest text-[#9A9A9A] mb-2">
                       Email Address *
                     </label>
-                    <input type="email" name="email" value={form.email} onChange={handleChange} required placeholder="your@email.com" className={inputClass} />
+                    <input id="contact-email" type="email" name="email" value={form.email} onChange={handleChange} required aria-required="true" placeholder="your@email.com" className={inputClass} />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-[family-name:var(--font-montserrat)] font-semibold uppercase tracking-widest text-[#9A9A9A] mb-2">
+                    <label htmlFor="contact-country" className="block text-xs font-[family-name:var(--font-montserrat)] font-semibold uppercase tracking-widest text-[#9A9A9A] mb-2">
                       Country
                     </label>
-                    <select name="country" value={form.country} onChange={handleChange} className={`${inputClass} appearance-none cursor-pointer`}>
+                    <select id="contact-country" name="country" value={form.country} onChange={handleChange} className={`${inputClass} appearance-none cursor-pointer`}>
                       <option value="">Select country</option>
                       {countries.map((c) => (
                         <option key={c.code} value={c.code}>{c.label}</option>
@@ -190,22 +190,23 @@ export default function Contact() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-[family-name:var(--font-montserrat)] font-semibold uppercase tracking-widest text-[#9A9A9A] mb-2">
+                    <label htmlFor="contact-phone" className="block text-xs font-[family-name:var(--font-montserrat)] font-semibold uppercase tracking-widest text-[#9A9A9A] mb-2">
                       Phone
                     </label>
-                    <input type="tel" name="phone" value={form.phone} onChange={handleChange} placeholder="+1 234 567 8900" className={inputClass} />
+                    <input id="contact-phone" type="tel" name="phone" value={form.phone} onChange={handleChange} placeholder="+1 234 567 8900" className={inputClass} />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-[family-name:var(--font-montserrat)] font-semibold uppercase tracking-widest text-[#9A9A9A] mb-2">
+                  <span id="contact-inquiry-label" className="block text-xs font-[family-name:var(--font-montserrat)] font-semibold uppercase tracking-widest text-[#9A9A9A] mb-2">
                     Inquiry Type *
-                  </label>
-                  <div className="flex flex-wrap gap-2">
+                  </span>
+                  <div role="group" aria-labelledby="contact-inquiry-label" className="flex flex-wrap gap-2">
                     {inquiryTypes.map((type) => (
                       <button
                         key={type}
                         type="button"
+                        aria-pressed={form.inquiry === type}
                         onClick={() => setForm((p) => ({ ...p, inquiry: type }))}
                         className={`px-4 py-2 text-xs font-[family-name:var(--font-montserrat)] font-bold uppercase tracking-widest rounded-sm border transition-all ${
                           form.inquiry === type
@@ -220,14 +221,16 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-[family-name:var(--font-montserrat)] font-semibold uppercase tracking-widest text-[#9A9A9A] mb-2">
+                  <label htmlFor="contact-message" className="block text-xs font-[family-name:var(--font-montserrat)] font-semibold uppercase tracking-widest text-[#9A9A9A] mb-2">
                     Message *
                   </label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     value={form.message}
                     onChange={handleChange}
                     required
+                    aria-required="true"
                     rows={5}
                     placeholder="Tell us about your interest in AfriCan / Exwick Farm..."
                     className={inputClass}
@@ -236,7 +239,7 @@ export default function Contact() {
 
                 {/* Error state */}
                 {error && (
-                  <div className="flex items-start gap-3 bg-[#ED1C24]/10 border border-[#ED1C24]/30 rounded-sm px-4 py-3">
+                  <div id="contact-error" role="alert" className="flex items-start gap-3 bg-[#ED1C24]/10 border border-[#ED1C24]/30 rounded-sm px-4 py-3">
                     <AlertCircle size={16} className="text-[#ED1C24] flex-shrink-0 mt-0.5" />
                     <div className="text-sm text-[#F5F5F5]">
                       {error}{" "}
@@ -250,6 +253,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={loading}
+                  aria-describedby={error ? "contact-error" : undefined}
                   className="w-full bg-[#ED1C24] text-white font-[family-name:var(--font-montserrat)] font-bold uppercase tracking-widest text-sm py-4 rounded-sm flex items-center justify-center gap-3 hover:bg-[#c8151c] shadow-lg hover:shadow-[#ED1C24]/30 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {loading ? (
